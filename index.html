@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Spare Parts Portal — CRUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 class="title">🔧 Spare Parts Portal</h1>
+  <p class="subtitle">Search by OEM, ZOREN or Product Name</p>
+
+  <div class="controls">
+    <div class="search-area">
+      <input type="text" id="searchInput" placeholder="Enter OEM, ZOREN or Product Name">
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <div class="right-controls">
+      <!-- Import JSON -->
+      <input type="file" id="jsonFileInput" accept=".json" style="display:none">
+      <button id="chooseFileBtn" class="small-btn">Choose JSON</button>
+      <button id="importJsonBtn" class="small-btn">Import</button>
+      
+
+      <!-- Add Product -->
+      <button id="toggleAddForm" class="primary-btn">+ Add Product</button>
+      <button id="exportJsonBtn" class="small-btn">Export JSON</button>
+    </div>
+  </div>
+
+  <div id="message" class="message" style="display:none"></div>
+
+  <!-- Add / Edit Product Form -->
+  <div id="addFormWrap" class="add-form" style="display:none">
+    <h3 id="formTitle">Add New Product</h3>
+    <div class="form-row">
+      <label>ZOREN Number</label>
+      <input type="text" id="add_zoren">
+    </div>
+    <div class="form-row">
+      <label>OEM Numbers (comma separated)</label>
+      <input type="text" id="add_oem">
+    </div>
+    <div class="form-row">
+      <label>Product Name</label>
+      <input type="text" id="add_name">
+    </div>
+    <div class="form-row">
+      <label>Car Maker</label>
+      <input type="text" id="add_maker">
+    </div>
+    <div class="form-row">
+      <label>Applications</label>
+      <input type="text" id="add_apps">
+    </div>
+    <div class="form-row">
+      <label>Search Keywords (space separated)</label>
+      <input type="text" id="add_search">
+    </div>
+
+    <div class="form-actions">
+      <button id="addProductBtn" class="primary-btn">Save</button>
+      <button id="cancelAddBtn" class="small-btn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="result" class="result-area"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
