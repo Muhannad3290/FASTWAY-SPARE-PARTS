@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add JSON Data</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        margin: 0;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: white;
+    }
+
+    .box {
+        width: 90%;
+        max-width: 900px;
+        background: white;
+        color: black;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    textarea {
+        width: 100%;
+        height: 200px;
+        border-radius: 12px;
+        border: 2px solid #ccc;
+        padding: 15px;
+        font-size: 15px;
+        outline: none;
+    }
+
+    textarea:focus {
+        border-color: #6a11cb;
+    }
+
+    button {
+        width: 100%;
+        background: #2575fc;
+        border: none;
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 12px;
+        color: white;
+        cursor: pointer;
+        margin-top: 18px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #1b5ed8;
+    }
+
+    #msg {
+        text-align: center;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Paste JSON Data</h2>
+
+    <textarea id="jsonInput" placeholder='Paste JSON array here... Example:
+[
+  {
+    "zoren": "ZRM0001001",
+    "oem": ["31110-09000"],
+    "car_maker": "Hyundai",
+    "applications": "SONATA"
+  }
+]' ></textarea>
+
+    <button onclick="saveJson()">Save JSON</button>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+function saveJson() {
+    const text = document.getElementById("jsonInput").value;
+
+    if (!text.trim()) {
+        document.getElementById('msg').textContent = "❌ Please paste JSON data!";
+        document.getElementById('msg').style.color = "red";
+        return;
+    }
+
+    // Try to parse JSON
+    try {
+        const jsonData = JSON.parse(text);
+
+        // Save permanently
+        localStorage.setItem("productData", JSON.stringify(jsonData));
+
+        document.getElementById('msg').textContent = "✅ JSON saved successfully!";
+        document.getElementById('msg').style.color = "green";
+
+    } catch (err) {
+        document.getElementById('msg').textContent = "❌ Invalid JSON format!";
+        document.getElementById('msg').style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
