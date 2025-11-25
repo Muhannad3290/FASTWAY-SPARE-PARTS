@@ -1,3 +1,16 @@
+  const firebaseConfig = {
+    apiKey: "AIzaSyBbq301d9EmuJkjVObRTaQmCJ_2_niunPg",
+    authDomain: "fastway-autospare-parts-2c90d.firebaseapp.com",
+    projectId: "fastway-autospare-parts-2c90d",
+    storageBucket: "fastway-autospare-parts-2c90d.firebasestorage.app",
+    messagingSenderId: "1044393920782",
+    appId: "1:1044393920782:web:5ae5717dfad9958f3fef5f",
+    measurementId: "G-B8TEXK3K3R"
+  };
+ // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 let database = [
   {
     id: 1,
@@ -199,4 +212,5 @@ exportJsonBtn.addEventListener('click', () => {
   URL.revokeObjectURL(url);
 
   showMessage('Products exported successfully!', false, 3000);
+
 });
